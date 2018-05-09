@@ -25,7 +25,7 @@ function demo_preprocess () {
 HTML
     ));
 
-    l10n_register('demo.plugin', 'de', array(
+    l10n_register('demo.plugin', 'en', array(
         'demo.menu.extras' => 'Extras',
         'demo.menu.extras.new-query' => 'Neue Abfrage',
         'demo.menu.extras.list-queries' => 'Gespeicherte Abfragen',

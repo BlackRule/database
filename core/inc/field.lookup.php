@@ -349,11 +349,12 @@
 							$obj->val, $obj->txt, get_the_primary_key_value_from_url($table, ''));
 					}
 					else {
+						$KOSTIL=$this->get_lookup_settings();
 						$output_buf .= sprintf(
 							"<option value='%s' data-label='%s'>%s</option>\n",
 							$obj->val,
 							unquote($obj->txt),
-							format_lookup_item_label($obj->txt, $this->get_lookup_settings(), $obj->val, 'html', false)
+							format_lookup_item_label($obj->txt, $KOSTIL, $obj->val, 'html', false)
 						);
 					}
 				}

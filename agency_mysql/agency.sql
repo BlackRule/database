@@ -278,8 +278,7 @@ CREATE TABLE users (
 -- Dumping data for table users
 --
 
-INSERT INTO users (id, login, password, name) VALUES
-(0, root, "63a9f0ea7bb98050796b649e85481845", "Admin Root");
+
 
 --
 -- Indexes for dumped tables

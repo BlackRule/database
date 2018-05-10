@@ -2,9 +2,8 @@
 $ALL_ACTIONS = array(MODE_NEW, MODE_EDIT, MODE_LIST, MODE_VIEW, MODE_DELETE, MODE_LINK);
 
 /* ========================================================================================================	*/
-$APP = array(
-    'plugins' => array('plugin.php'),
-    'title' => 'Туристическая фирма',
+$APP = array (
+    'title' => 'agency Database',
     'view_display_null_fields' => false,
     'page_size' => 10,
     'max_text_len' => 250,
@@ -12,44 +11,28 @@ $APP = array(
     'mainmenu_tables_autosort' => true,
     'search_lookup_resolve' => true,
     'search_string_transformation' => 'lower((%s)::text)',
-    'null_label' => "<span class='nowrap' title='If you check this box, no value will be stored for this field." .
-        "This may reflect missing, unknown, unspecified or inapplicable information. Note that no value (missing information)" .
-        "is different to providing an empty value: an empty value is a value.'>No Value</span>",
-    'render_main_page_proc' => 'agency_main_page',
-    'menu_complete_proc' => 'agency_menu_complete',
-    'querypage_stored_queries_table' => 'stored_queries',
-    'global_search' => array('include_table' => true),
-    'preprocess_func' => 'agency_preprocess'
 );
 
-$DB = array(
+$DB = array (
     'type' => 'postgresql',
     'host' => 'localhost',
     'port' => 5432,
-    'user' => 'ivan',
-    'pass' => 'password',
-    'db' => 'agency'
+    'user' => 'postgres',
+    'pass' => 'root',
+    'db' => 'agency',
 );
 
-/* ========================================================================================================	*/
-$LOGIN = array(
-    'users_table' => 'users',
-    'primary_key' => 'id',
-    'username_field' => 'login',
-    'password_field' => 'password',
-    'name_field' => 'name',
-    'password_hash_func' => 'md5',
-    'form' => array('username' => 'Имя пользователя', 'password' => 'Пароль'),
+$LOGIN = array (
 );
 
-$TABLES = array(
+$TABLES = array (
     'client' =>
-        array(
+        array (
             'display_name' => 'Client',
             'description' => '',
             'item_name' => 'Client',
             'actions' =>
-                array(
+                array (
                     0 => 'edit',
                     1 => 'new',
                     2 => 'view',
@@ -58,29 +41,29 @@ $TABLES = array(
                     5 => 'link',
                 ),
             'fields' =>
-                array(
+                array (
                     'client_id' =>
-                        array(
+                        array (
                             'label' => 'Client Id',
                             'required' => true,
                             'editable' => false,
                             'type' => 'T_Number',
                         ),
                     'group_id' =>
-                        array(
+                        array (
                             'label' => 'Group Id',
                             'required' => true,
                             'editable' => true,
                             'type' => 'T_Number',
                         ),
                     'passport_id' =>
-                        array(
+                        array (
                             'label' => 'Passport Id',
                             'required' => true,
                             'editable' => true,
                             'type' => 'T_ForeignKeyLookup',
                             'lookup' =>
-                                array(
+                                array (
                                     'cardinality' => 'CARDINALITY_SINGLE',
                                     'table' => 'passport',
                                     'field' => 'passport_id',
@@ -89,7 +72,7 @@ $TABLES = array(
                                 ),
                         ),
                     'insurance_id' =>
-                        array(
+                        array (
                             'label' => 'Insurance Id',
                             'required' => true,
                             'editable' => true,
@@ -97,9 +80,9 @@ $TABLES = array(
                         ),
                 ),
             'primary_key' =>
-                array(
+                array (
                     'columns' =>
-                        array(
+                        array (
                             0 => 'client_id',
                         ),
                     'auto' => true,
@@ -107,12 +90,12 @@ $TABLES = array(
                 ),
         ),
     'client__group_' =>
-        array(
+        array (
             'display_name' => 'Client  Group ',
             'description' => '',
             'item_name' => 'Client  Group ',
             'actions' =>
-                array(
+                array (
                     0 => 'edit',
                     1 => 'new',
                     2 => 'view',
@@ -121,15 +104,15 @@ $TABLES = array(
                     5 => 'link',
                 ),
             'fields' =>
-                array(
+                array (
                     'client_id' =>
-                        array(
+                        array (
                             'label' => 'Client Id',
                             'required' => true,
                             'editable' => true,
                             'type' => 'T_ForeignKeyLookup',
                             'lookup' =>
-                                array(
+                                array (
                                     'cardinality' => 'CARDINALITY_SINGLE',
                                     'table' => 'client',
                                     'field' => 'client_id',
@@ -138,13 +121,13 @@ $TABLES = array(
                                 ),
                         ),
                     'group_id' =>
-                        array(
+                        array (
                             'label' => 'Group Id',
                             'required' => true,
                             'editable' => true,
                             'type' => 'T_ForeignKeyLookup',
                             'lookup' =>
-                                array(
+                                array (
                                     'cardinality' => 'CARDINALITY_SINGLE',
                                     'table' => 'group_',
                                     'field' => 'group_id',
@@ -154,19 +137,20 @@ $TABLES = array(
                         ),
                 ),
             'primary_key' =>
-                array(
+                array (
                     'columns' =>
-                        array(),
+                        array (
+                        ),
                     'auto' => false,
                 ),
         ),
     'country' =>
-        array(
+        array (
             'display_name' => 'Country',
             'description' => '',
             'item_name' => 'Country',
             'actions' =>
-                array(
+                array (
                     0 => 'edit',
                     1 => 'new',
                     2 => 'view',
@@ -175,16 +159,16 @@ $TABLES = array(
                     5 => 'link',
                 ),
             'fields' =>
-                array(
+                array (
                     'country_id' =>
-                        array(
+                        array (
                             'label' => 'Country Id',
                             'required' => true,
                             'editable' => false,
                             'type' => 'T_Number',
                         ),
                     'country_name' =>
-                        array(
+                        array (
                             'label' => 'Country Name',
                             'required' => true,
                             'editable' => true,
@@ -193,9 +177,9 @@ $TABLES = array(
                         ),
                 ),
             'primary_key' =>
-                array(
+                array (
                     'columns' =>
-                        array(
+                        array (
                             0 => 'country_id',
                         ),
                     'auto' => true,
@@ -203,12 +187,12 @@ $TABLES = array(
                 ),
         ),
     'country__trip' =>
-        array(
+        array (
             'display_name' => 'Country  Trip',
             'description' => '',
             'item_name' => 'Country  Trip',
             'actions' =>
-                array(
+                array (
                     0 => 'edit',
                     1 => 'new',
                     2 => 'view',
@@ -217,15 +201,15 @@ $TABLES = array(
                     5 => 'link',
                 ),
             'fields' =>
-                array(
+                array (
                     'country_id' =>
-                        array(
+                        array (
                             'label' => 'Country Id',
                             'required' => true,
                             'editable' => true,
                             'type' => 'T_ForeignKeyLookup',
                             'lookup' =>
-                                array(
+                                array (
                                     'cardinality' => 'CARDINALITY_SINGLE',
                                     'table' => 'country',
                                     'field' => 'country_id',
@@ -234,13 +218,13 @@ $TABLES = array(
                                 ),
                         ),
                     'trip_id' =>
-                        array(
+                        array (
                             'label' => 'Trip Id',
                             'required' => true,
                             'editable' => true,
                             'type' => 'T_ForeignKeyLookup',
                             'lookup' =>
-                                array(
+                                array (
                                     'cardinality' => 'CARDINALITY_SINGLE',
                                     'table' => 'trip',
                                     'field' => 'trip_id',
@@ -250,19 +234,20 @@ $TABLES = array(
                         ),
                 ),
             'primary_key' =>
-                array(
+                array (
                     'columns' =>
-                        array(),
+                        array (
+                        ),
                     'auto' => false,
                 ),
         ),
     'group_' =>
-        array(
+        array (
             'display_name' => 'Group ',
             'description' => '',
             'item_name' => 'Group ',
             'actions' =>
-                array(
+                array (
                     0 => 'edit',
                     1 => 'new',
                     2 => 'view',
@@ -271,29 +256,29 @@ $TABLES = array(
                     5 => 'link',
                 ),
             'fields' =>
-                array(
+                array (
                     'group_id' =>
-                        array(
+                        array (
                             'label' => 'Group Id',
                             'required' => true,
                             'editable' => false,
                             'type' => 'T_Number',
                         ),
                     'n_places' =>
-                        array(
+                        array (
                             'label' => 'N Places',
                             'required' => true,
                             'editable' => true,
                             'type' => 'T_Number',
                         ),
                     'trip_id' =>
-                        array(
+                        array (
                             'label' => 'Trip Id',
                             'required' => true,
                             'editable' => true,
                             'type' => 'T_ForeignKeyLookup',
                             'lookup' =>
-                                array(
+                                array (
                                     'cardinality' => 'CARDINALITY_SINGLE',
                                     'table' => 'trip',
                                     'field' => 'trip_id',
@@ -302,27 +287,27 @@ $TABLES = array(
                                 ),
                         ),
                     'departure_date' =>
-                        array(
+                        array (
                             'label' => 'Departure Date',
                             'required' => true,
                             'editable' => true,
                             'type' => 'T_TextLine',
                         ),
                     'arrival_date' =>
-                        array(
+                        array (
                             'label' => 'Arrival Date',
                             'required' => true,
                             'editable' => true,
                             'type' => 'T_TextLine',
                         ),
                     'attendant_id' =>
-                        array(
+                        array (
                             'label' => 'Attendant Id',
                             'required' => true,
                             'editable' => true,
                             'type' => 'T_ForeignKeyLookup',
                             'lookup' =>
-                                array(
+                                array (
                                     'cardinality' => 'CARDINALITY_SINGLE',
                                     'table' => 'personnel',
                                     'field' => 'person_id',
@@ -332,9 +317,9 @@ $TABLES = array(
                         ),
                 ),
             'primary_key' =>
-                array(
+                array (
                     'columns' =>
-                        array(
+                        array (
                             0 => 'group_id',
                         ),
                     'auto' => true,
@@ -342,12 +327,12 @@ $TABLES = array(
                 ),
         ),
     'group__hotel' =>
-        array(
+        array (
             'display_name' => 'Group  Hotel',
             'description' => '',
             'item_name' => 'Group  Hotel',
             'actions' =>
-                array(
+                array (
                     0 => 'edit',
                     1 => 'new',
                     2 => 'view',
@@ -356,15 +341,15 @@ $TABLES = array(
                     5 => 'link',
                 ),
             'fields' =>
-                array(
+                array (
                     'group_id' =>
-                        array(
+                        array (
                             'label' => 'Group Id',
                             'required' => true,
                             'editable' => true,
                             'type' => 'T_ForeignKeyLookup',
                             'lookup' =>
-                                array(
+                                array (
                                     'cardinality' => 'CARDINALITY_SINGLE',
                                     'table' => 'group_',
                                     'field' => 'group_id',
@@ -373,13 +358,13 @@ $TABLES = array(
                                 ),
                         ),
                     'hotel_id' =>
-                        array(
+                        array (
                             'label' => 'Hotel Id',
                             'required' => true,
                             'editable' => true,
                             'type' => 'T_ForeignKeyLookup',
                             'lookup' =>
-                                array(
+                                array (
                                     'cardinality' => 'CARDINALITY_SINGLE',
                                     'table' => 'hotel',
                                     'field' => 'hotel_id',
@@ -388,14 +373,14 @@ $TABLES = array(
                                 ),
                         ),
                     'check_in_date' =>
-                        array(
+                        array (
                             'label' => 'Check In Date',
                             'required' => true,
                             'editable' => true,
                             'type' => 'T_TextLine',
                         ),
                     'check_out_date' =>
-                        array(
+                        array (
                             'label' => 'Check Out Date',
                             'required' => true,
                             'editable' => true,
@@ -403,19 +388,20 @@ $TABLES = array(
                         ),
                 ),
             'primary_key' =>
-                array(
+                array (
                     'columns' =>
-                        array(),
+                        array (
+                        ),
                     'auto' => false,
                 ),
         ),
     'hotel' =>
-        array(
+        array (
             'display_name' => 'Hotel',
             'description' => '',
             'item_name' => 'Hotel',
             'actions' =>
-                array(
+                array (
                     0 => 'edit',
                     1 => 'new',
                     2 => 'view',
@@ -424,16 +410,16 @@ $TABLES = array(
                     5 => 'link',
                 ),
             'fields' =>
-                array(
+                array (
                     'hotel_id' =>
-                        array(
+                        array (
                             'label' => 'Hotel Id',
                             'required' => true,
                             'editable' => false,
                             'type' => 'T_Number',
                         ),
                     'name' =>
-                        array(
+                        array (
                             'label' => 'Name',
                             'required' => true,
                             'editable' => true,
@@ -441,14 +427,14 @@ $TABLES = array(
                             'len' => 30,
                         ),
                     'hotel_type_id' =>
-                        array(
+                        array (
                             'label' => 'Hotel Type Id',
                             'required' => true,
                             'editable' => true,
                             'type' => 'T_Number',
                         ),
                     'food_type_id' =>
-                        array(
+                        array (
                             'label' => 'Food Type Id',
                             'required' => true,
                             'editable' => true,
@@ -456,9 +442,9 @@ $TABLES = array(
                         ),
                 ),
             'primary_key' =>
-                array(
+                array (
                     'columns' =>
-                        array(
+                        array (
                             0 => 'hotel_id',
                         ),
                     'auto' => true,
@@ -466,12 +452,12 @@ $TABLES = array(
                 ),
         ),
     'passport' =>
-        array(
+        array (
             'display_name' => 'Passport',
             'description' => '',
             'item_name' => 'Passport',
             'actions' =>
-                array(
+                array (
                     0 => 'edit',
                     1 => 'new',
                     2 => 'view',
@@ -480,9 +466,9 @@ $TABLES = array(
                     5 => 'link',
                 ),
             'fields' =>
-                array(
+                array (
                     'passport_id' =>
-                        array(
+                        array (
                             'label' => 'Passport Id',
                             'required' => true,
                             'editable' => false,
@@ -490,9 +476,9 @@ $TABLES = array(
                         ),
                 ),
             'primary_key' =>
-                array(
+                array (
                     'columns' =>
-                        array(
+                        array (
                             0 => 'passport_id',
                         ),
                     'auto' => true,
@@ -500,12 +486,12 @@ $TABLES = array(
                 ),
         ),
     'personnel' =>
-        array(
+        array (
             'display_name' => 'Personnel',
             'description' => '',
             'item_name' => 'Personnel',
             'actions' =>
-                array(
+                array (
                     0 => 'edit',
                     1 => 'new',
                     2 => 'view',
@@ -514,16 +500,16 @@ $TABLES = array(
                     5 => 'link',
                 ),
             'fields' =>
-                array(
+                array (
                     'person_id' =>
-                        array(
+                        array (
                             'label' => 'Person Id',
                             'required' => true,
                             'editable' => false,
                             'type' => 'T_Number',
                         ),
                     'person_name' =>
-                        array(
+                        array (
                             'label' => 'Person Name',
                             'required' => true,
                             'editable' => true,
@@ -532,9 +518,9 @@ $TABLES = array(
                         ),
                 ),
             'primary_key' =>
-                array(
+                array (
                     'columns' =>
-                        array(
+                        array (
                             0 => 'person_id',
                         ),
                     'auto' => true,
@@ -542,12 +528,12 @@ $TABLES = array(
                 ),
         ),
     'transport_type' =>
-        array(
+        array (
             'display_name' => 'Transport Type',
             'description' => '',
             'item_name' => 'Transport Type',
             'actions' =>
-                array(
+                array (
                     0 => 'edit',
                     1 => 'new',
                     2 => 'view',
@@ -556,16 +542,16 @@ $TABLES = array(
                     5 => 'link',
                 ),
             'fields' =>
-                array(
+                array (
                     'transport_type_id' =>
-                        array(
+                        array (
                             'label' => 'Transport Type Id',
                             'required' => true,
                             'editable' => false,
                             'type' => 'T_Number',
                         ),
                     'transport_type' =>
-                        array(
+                        array (
                             'label' => 'Transport Type',
                             'required' => true,
                             'editable' => true,
@@ -574,9 +560,9 @@ $TABLES = array(
                         ),
                 ),
             'primary_key' =>
-                array(
+                array (
                     'columns' =>
-                        array(
+                        array (
                             0 => 'transport_type_id',
                         ),
                     'auto' => true,
@@ -584,12 +570,12 @@ $TABLES = array(
                 ),
         ),
     'transport_type__trip' =>
-        array(
+        array (
             'display_name' => 'Transport Type  Trip',
             'description' => '',
             'item_name' => 'Transport Type  Trip',
             'actions' =>
-                array(
+                array (
                     0 => 'edit',
                     1 => 'new',
                     2 => 'view',
@@ -598,15 +584,15 @@ $TABLES = array(
                     5 => 'link',
                 ),
             'fields' =>
-                array(
+                array (
                     'transport_type_id' =>
-                        array(
+                        array (
                             'label' => 'Transport Type Id',
                             'required' => true,
                             'editable' => true,
                             'type' => 'T_ForeignKeyLookup',
                             'lookup' =>
-                                array(
+                                array (
                                     'cardinality' => 'CARDINALITY_SINGLE',
                                     'table' => 'transport_type',
                                     'field' => 'transport_type_id',
@@ -615,13 +601,13 @@ $TABLES = array(
                                 ),
                         ),
                     'trip_id' =>
-                        array(
+                        array (
                             'label' => 'Trip Id',
                             'required' => true,
                             'editable' => true,
                             'type' => 'T_ForeignKeyLookup',
                             'lookup' =>
-                                array(
+                                array (
                                     'cardinality' => 'CARDINALITY_SINGLE',
                                     'table' => 'trip',
                                     'field' => 'trip_id',
@@ -631,19 +617,20 @@ $TABLES = array(
                         ),
                 ),
             'primary_key' =>
-                array(
+                array (
                     'columns' =>
-                        array(),
+                        array (
+                        ),
                     'auto' => false,
                 ),
         ),
     'trip' =>
-        array(
+        array (
             'display_name' => 'Trip',
             'description' => '',
             'item_name' => 'Trip',
             'actions' =>
-                array(
+                array (
                     0 => 'edit',
                     1 => 'new',
                     2 => 'view',
@@ -652,23 +639,23 @@ $TABLES = array(
                     5 => 'link',
                 ),
             'fields' =>
-                array(
+                array (
                     'trip_id' =>
-                        array(
+                        array (
                             'label' => 'Trip Id',
                             'required' => true,
                             'editable' => false,
                             'type' => 'T_Number',
                         ),
                     'duration' =>
-                        array(
+                        array (
                             'label' => 'Duration',
                             'required' => true,
                             'editable' => true,
                             'type' => 'T_Number',
                         ),
                     'cost' =>
-                        array(
+                        array (
                             'label' => 'Cost',
                             'required' => true,
                             'editable' => true,
@@ -676,9 +663,9 @@ $TABLES = array(
                         ),
                 ),
             'primary_key' =>
-                array(
+                array (
                     'columns' =>
-                        array(
+                        array (
                             0 => 'trip_id',
                         ),
                     'auto' => true,
@@ -686,12 +673,12 @@ $TABLES = array(
                 ),
         ),
     'trip__excursion' =>
-        array(
+        array (
             'display_name' => 'Trip  Excursion',
             'description' => '',
             'item_name' => 'Trip  Excursion',
             'actions' =>
-                array(
+                array (
                     0 => 'edit',
                     1 => 'new',
                     2 => 'view',
@@ -700,15 +687,15 @@ $TABLES = array(
                     5 => 'link',
                 ),
             'fields' =>
-                array(
+                array (
                     'trip_id' =>
-                        array(
+                        array (
                             'label' => 'Trip Id',
                             'required' => true,
                             'editable' => true,
                             'type' => 'T_ForeignKeyLookup',
                             'lookup' =>
-                                array(
+                                array (
                                     'cardinality' => 'CARDINALITY_SINGLE',
                                     'table' => 'trip',
                                     'field' => 'trip_id',
@@ -717,7 +704,7 @@ $TABLES = array(
                                 ),
                         ),
                     'excursion_id' =>
-                        array(
+                        array (
                             'label' => 'Excursion Id',
                             'required' => true,
                             'editable' => true,
@@ -725,19 +712,20 @@ $TABLES = array(
                         ),
                 ),
             'primary_key' =>
-                array(
+                array (
                     'columns' =>
-                        array(),
+                        array (
+                        ),
                     'auto' => false,
                 ),
         ),
     'users' =>
-        array(
+        array (
             'display_name' => 'Users',
             'description' => '',
             'item_name' => 'Users',
             'actions' =>
-                array(
+                array (
                     0 => 'edit',
                     1 => 'new',
                     2 => 'view',
@@ -746,16 +734,16 @@ $TABLES = array(
                     5 => 'link',
                 ),
             'fields' =>
-                array(
+                array (
                     'id' =>
-                        array(
+                        array (
                             'label' => 'Id',
                             'required' => true,
                             'editable' => true,
                             'type' => 'T_Number',
                         ),
                     'login' =>
-                        array(
+                        array (
                             'label' => 'Login',
                             'required' => true,
                             'editable' => true,
@@ -763,7 +751,7 @@ $TABLES = array(
                             'len' => 50,
                         ),
                     'password' =>
-                        array(
+                        array (
                             'label' => 'Password',
                             'required' => true,
                             'editable' => true,
@@ -771,7 +759,7 @@ $TABLES = array(
                             'len' => 32,
                         ),
                     'name' =>
-                        array(
+                        array (
                             'label' => 'Name',
                             'required' => true,
                             'editable' => true,
@@ -780,9 +768,9 @@ $TABLES = array(
                         ),
                 ),
             'primary_key' =>
-                array(
+                array (
                     'columns' =>
-                        array(
+                        array (
                             0 => 'id',
                         ),
                     'auto' => false,

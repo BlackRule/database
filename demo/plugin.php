@@ -13,7 +13,7 @@ function demo_preprocess () {
     $new = l10n('menu.new');
     $browse = l10n('menu.browse+edit');
 
-    l10n_register('demo.plugin', 'ru', array(
+    l10n_register('demo.plugin', 'en', array(
         'demo.menu.extras' => 'Extras',
         'demo.menu.extras.new-query' => 'Query the Database',
         'demo.menu.extras.list-queries' => 'Stored Queries',
@@ -25,15 +25,15 @@ function demo_preprocess () {
 HTML
     ));
 
-    l10n_register('demo.plugin', 'ru', array(
-        'demo.menu.extras' => 'Дополнительно',
-        'demo.menu.extras.new-query' => 'Запрос к базе',
-        'demo.menu.extras.list-queries' => 'Сохраненные запросы',
+    l10n_register('demo.plugin', 'de', array(
+        'demo.menu.extras' => 'Extras',
+        'demo.menu.extras.new-query' => 'Neue Abfrage',
+        'demo.menu.extras.list-queries' => 'Gespeicherte Abfragen',
         'demo.main-page' => <<<HTML
-				<p>Наша туристическая фирма </p>
-				<p>Через меню <i>$new</i> вы можете добавить новые записи в бд.</p>
-				<p>Im Menü <i>$browse</i>  вы можете просматривать,редактировать и удалять записи в бд.</p>
-				<p>Через меню <i>Extras</i> вы можете создать запрос.</p>
+				<p>Das ist eine Demo von <a href="https://github.com/eScienceCenter/dbWebGen">dbWebGen</a>. Es ist großartig.</p>
+				<p>Im Menü <i>$new</i> können neue Datensätze angelegt werden.</p>
+				<p>Im Menü <i>$browse</i> können bestehende Datensätze durchsucht, gefiltert, bearbeitet, und gelöscht werden.</p>
+				<p>Im Menü <i>Extras</i> können Datenbankabfragen erstellt und gesehen werden.</p>
 HTML
     ));
 }

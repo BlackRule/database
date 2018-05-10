@@ -10,7 +10,7 @@ create table users (
 	login varchar(10) unique not null,
 	password char(32) not null	
 );
-insert into users(name, login, password) values('Demo God', 'test', md5('test'));
+insert into users(name, login, password) values('root', 'root', md5('Root Admin'));
 
 drop table if exists pictures cascade;
 create table pictures (

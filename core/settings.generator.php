@@ -1,10 +1,11 @@
-<?php/*
+<?php
+/*
 	this is one ugly script that tries to extract a comfortable starting point for settings.php based on any given postgres database.
 	it can extract tables, columns, primary keys, foreign keys, check constraints (range of values) and enum types.
 	note: the db user you use with this script needs to have read permission on the target schema and on the information_schema
 */
 
-	foreach(array('host' => 'localhost', 'port' => 5432, 'name' => '', 'user' => 'postgres', 'pass' => '', 'name' => '',
+	foreach(array('host' => 'localhost', 'port' => 5432, 'name' => 'agency', 'user' => 'postgres', 'pass' => 'root',
 				'schema' => 'public') as $k => $v)
 		${'db_' . $k} = isset($_POST[$k]) ? $_POST[$k] : $v;
 

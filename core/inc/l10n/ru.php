@@ -327,7 +327,7 @@ HTML
 
         'list.num-indicator' => 'Displaying records <b>$1</b>&ndash;<b>$2</b> of <b>$3</b>',
         'list.total-indicator' => 'total in table: <b>$1</b>',
-        'list.button-new' => 'New $1',
+        'list.button-new' => 'Создать $1',
         'list.jump-to-page' => 'Jump to page',
 
         'login.button' => 'Войти',
@@ -349,9 +349,9 @@ HTML
         'map-picker.edit-instructions' => "Place the shape at the desired location. To create a shape, click any of the shape icons (e.g. the <span class='glyphicon glyphicon-map-marker'></span> marker icon) and then draw the shape on the map. To edit an existing shape, click the <span class='glyphicon glyphicon-edit'></span> icon and follow the instructions. When you're done, click the <span class='glyphicon glyphicon-check'></span> Done button. Double click to move an overlay image to the front.",
 
         'menu.browse+edit' => 'Browse & Edit',
-        'menu.new' => 'New',
+        'menu.new' => 'Создать',
 
-        'new-edit.heading-new' => 'New $1',
+        'new-edit.heading-new' => 'Создать $1',
         'new-edit.heading-edit' => 'Edit $1',
         'new-edit.heading-edit-inline' => 'Edit Details of $1',
         'new-edit.save-button' => 'Save',

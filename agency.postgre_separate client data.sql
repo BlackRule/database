@@ -3,10 +3,26 @@
 --"'actions'\s*=>\s*array\s*\(\s*0\s*=>\s*'edit',\s*1\s*=>\s*'new',\s*2\s*=>\s*'view',\s*3\s*=>\s*'list',\s*4\s*=>\s*'delete',\s*5\s*=>\s*'link',\s*\)"
 || "'actions' => \$ALL_ACTIONS"
 -- "'item_name' => '([\w\s]+)s'" || "'item_name' => '$1'"
-Баги
-https://github.com/eScienceCenter/dbWebGen/issues/30
                         */
 --------------ReferenceBooks---------------
+drop table if exists passports_russ cascade;
+create table passports_russ (
+	id serial primary key ,
+	data varchar(100) not null
+);
+
+drop table if exists passports_foreign cascade;
+create table passports_foreign (
+	id serial primary key ,
+	data varchar(100) not null
+);
+
+drop table if exists insurances cascade;
+create table insurances (
+	id serial primary key ,
+	date_of_issue date not null
+);
+
 drop table if exists hotel_types cascade;
 create table hotel_types (
 	id serial primary key ,
@@ -79,10 +95,10 @@ drop table if exists clients cascade;
 --see clients__groups
 create table clients (
   id serial primary key ,
-  fullname varchar(100) not null,
-  rus_passport_data varchar(100) not null,
-	foreign_passport_data varchar(100) not null,
-	insurance_date_of_issue date not null
+  fullname varchar(100) not null, --TODO from passport
+  passport_russ_id int not null references passports_russ(id),
+  passport_foreign_id int not null references passports_foreign(id),
+  insurance_id int not null references insurances(id)
 );
 -----------
 --https://stackoverflow.com/questions/1743439/how-to-write-a-constraint-concerning-a-max-number-of-rows-in-postgresql

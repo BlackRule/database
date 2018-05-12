@@ -60,7 +60,8 @@ trip_id //many groups one trip
 Таблица клиенты clients
 id
 ФИО едущего в определенную поездку full_name
-
+insurance_id unique
+passport_id unique
 ------------
 Проживание accommodations многие ко многим
 +дата вьезд/выезд 

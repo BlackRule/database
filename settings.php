@@ -42,697 +42,786 @@ $LOGIN = array(
     'form' => array('username' => 'Имя пользователя', 'password' => 'Пароль'),
 );
 
-$TABLES = array(
-    'client' => array(
-            'display_name' => 'Client',
-            'description' => '',
-            'item_name' => 'Client',
-            'actions' =>
-                array(
-                    0 => 'edit',
-                    1 => 'new',
-                    2 => 'view',
-                    3 => 'list',
-                    4 => 'delete',
-                    5 => 'link',
-                ),
-            'fields' =>
-                array(
-                    'client_id' =>
-                        array(
-                            'label' => 'Client Id',
-                            'required' => true,
-                            'editable' => false,
-                            'type' => 'T_Number',
-                        ),
-                    'group_id' =>
-                        array(
-                            'label' => 'Group Id',
-                            'required' => true,
-                            'editable' => true,
-                            'type' => 'T_Number',
-                        ),
-                    'passport_id' => array(
-                            'label' => 'Passport Id',
-                            'required' => true,
-                            'editable' => true,
-                            'type' => 'T_ForeignKeyLookup',
-                            'lookup' => array(
-                                    'cardinality' => 'CARDINALITY_SINGLE',
-                                    'table' => 'passport',
-                                    'field' => 'passport_id',
-                                    'display' => 'passport_id',
-                                    'label_display_expr_only' => true,
-                                ),
-                        ),
-                    'insurance_id' =>
-                        array(
-                            'label' => 'Insurance Id',
-                            'required' => true,
-                            'editable' => true,
-                            'type' => 'T_Number',
-                        ),
-                ),
-            'primary_key' =>
-                array(
-                    'columns' =>
-                        array(
-                            0 => 'client_id',
-                        ),
-                    'auto' => true,
-                    'sequence_name' => 'client_client_id_seq',
-                ),
-        ),
-    'client__group_' =>
-        array(
-            'display_name' => 'Client  Group ',
-            'description' => '',
-            'item_name' => 'Client  Group ',
-            'actions' =>
-                array(
-                    0 => 'edit',
-                    1 => 'new',
-                    2 => 'view',
-                    3 => 'list',
-                    4 => 'delete',
-                    5 => 'link',
-                ),
-            'fields' =>
-                array(
-                    'client_id' =>
-                        array(
-                            'label' => 'Client Id',
-                            'required' => true,
-                            'editable' => true,
-                            'type' => 'T_ForeignKeyLookup',
-                            'lookup' =>
-                                array(
-                                    'cardinality' => 'CARDINALITY_SINGLE',
-                                    'table' => 'client',
-                                    'field' => 'client_id',
-                                    'display' => 'client_id',
-                                    'label_display_expr_only' => true,
-                                ),
-                        ),
-                    'group_id' =>
-                        array(
-                            'label' => 'Group Id',
-                            'required' => true,
-                            'editable' => true,
-                            'type' => 'T_ForeignKeyLookup',
-                            'lookup' =>
-                                array(
-                                    'cardinality' => 'CARDINALITY_SINGLE',
-                                    'table' => 'group_',
-                                    'field' => 'group_id',
-                                    'display' => 'group_id',
-                                    'label_display_expr_only' => true,
-                                ),
-                        ),
-                ),
-            'primary_key' =>
-                array(
-                    'columns' =>
-                        array(),
-                    'auto' => false,
-                ),
-        ),
-    'country' => array(
-        'display_name' => 'Страны',
-        'description' => '',
-        'item_name' => 'Страна',
-        'actions' => $ALL_ACTIONS,
-        'fields' =>
-            array(
-                'country_id' =>
-                    array(
-                        'label' => 'Id страны',
-                        'required' => true,
-                        'editable' => false,
-                        'type' => 'T_Number',
-                    ),
-                'country_name' =>
-                    array(
-                        'label' => 'Название страны',
-                        'required' => true,
-                        'editable' => true,
-                        'type' => 'T_TextLine',
-                        'len' => 50,
-                    ),
-            ),
-        'primary_key' =>
-            array(
-                'columns' =>
-                    array(
-                        0 => 'country_id',
-                    ),
-                'auto' => true,
-                'sequence_name' => 'country_country_id_seq',
-            ),
-    ),
-    'country__trip' => array(
-        'display_name' => 'Country  Trip',
-        'description' => '',
-        'item_name' => 'Country  Trip',
-        'actions' =>
-            array(
-                0 => 'edit',
-                1 => 'new',
-                2 => 'view',
-                3 => 'list',
-                4 => 'delete',
-                5 => 'link',
-            ),
-        'fields' =>
-            array(
-                'country_id' =>
-                    array(
-                        'label' => 'Country Id',
-                        'required' => true,
-                        'editable' => true,
-                        'type' => 'T_ForeignKeyLookup',
-                        'lookup' =>
-                            array(
-                                'cardinality' => 'CARDINALITY_SINGLE',
-                                'table' => 'country',
-                                'field' => 'country_id',
-                                'display' => 'country_name',
-                                'label_display_expr_only' => true,
-                            ),
-                    ),
-                'trip_id' =>
-                    array(
-                        'label' => 'Trip Id',
-                        'required' => true,
-                        'editable' => true,
-                        'type' => 'T_ForeignKeyLookup',
-                        'lookup' =>
-                            array(
-                                'cardinality' => 'CARDINALITY_SINGLE',
-                                'table' => 'trip',
-                                'field' => 'trip_id',
-                                'display' => 'trip_id',
-                                'label_display_expr_only' => true,
-                            ),
-                    ),
-            ),
-        'primary_key' =>
-            array(
-                'columns' =>
-                    array(),
-                'auto' => false,
-            ),
-    ),
-    'group_' =>
-        array(
-            'display_name' => 'Group ',
-            'description' => '',
-            'item_name' => 'Group ',
-            'actions' =>
-                array(
-                    0 => 'edit',
-                    1 => 'new',
-                    2 => 'view',
-                    3 => 'list',
-                    4 => 'delete',
-                    5 => 'link',
-                ),
-            'fields' =>
-                array(
-                    'group_id' =>
-                        array(
-                            'label' => 'Group Id',
-                            'required' => true,
-                            'editable' => false,
-                            'type' => 'T_Number',
-                        ),
-                    'n_places' =>
-                        array(
-                            'label' => 'N Places',
-                            'required' => true,
-                            'editable' => true,
-                            'type' => 'T_Number',
-                        ),
-                    'trip_id' =>
-                        array(
-                            'label' => 'Trip Id',
-                            'required' => true,
-                            'editable' => true,
-                            'type' => 'T_ForeignKeyLookup',
-                            'lookup' =>
-                                array(
-                                    'cardinality' => 'CARDINALITY_SINGLE',
-                                    'table' => 'trip',
-                                    'field' => 'trip_id',
-                                    'display' => 'trip_id',
-                                    'label_display_expr_only' => true,
-                                ),
-                        ),
-                    'departure_date' =>
-                        array(
-                            'label' => 'Departure Date',
-                            'required' => true,
-                            'editable' => true,
-                            'type' => 'T_TextLine',
-                        ),
-                    'arrival_date' =>
-                        array(
-                            'label' => 'Arrival Date',
-                            'required' => true,
-                            'editable' => true,
-                            'type' => 'T_TextLine',
-                        ),
-                    'attendant_id' =>
-                        array(
-                            'label' => 'Attendant Id',
-                            'required' => true,
-                            'editable' => true,
-                            'type' => 'T_ForeignKeyLookup',
-                            'lookup' =>
-                                array(
-                                    'cardinality' => 'CARDINALITY_SINGLE',
-                                    'table' => 'personnel',
-                                    'field' => 'person_id',
-                                    'display' => 'person_name',
-                                    'label_display_expr_only' => true,
-                                ),
-                        ),
-                ),
-            'primary_key' =>
-                array(
-                    'columns' =>
-                        array(
-                            0 => 'group_id',
-                        ),
-                    'auto' => true,
-                    'sequence_name' => 'group__group_id_seq',
-                ),
-        ),
-    'group__hotel' =>
-        array(
-            'display_name' => 'Group  Hotel',
-            'description' => '',
-            'item_name' => 'Group  Hotel',
-            'actions' =>
-                array(
-                    0 => 'edit',
-                    1 => 'new',
-                    2 => 'view',
-                    3 => 'list',
-                    4 => 'delete',
-                    5 => 'link',
-                ),
-            'fields' =>
-                array(
-                    'group_id' =>
-                        array(
-                            'label' => 'Group Id',
-                            'required' => true,
-                            'editable' => true,
-                            'type' => 'T_ForeignKeyLookup',
-                            'lookup' =>
-                                array(
-                                    'cardinality' => 'CARDINALITY_SINGLE',
-                                    'table' => 'group_',
-                                    'field' => 'group_id',
-                                    'display' => 'group_id',
-                                    'label_display_expr_only' => true,
-                                ),
-                        ),
-                    'hotel_id' =>
-                        array(
-                            'label' => 'Hotel Id',
-                            'required' => true,
-                            'editable' => true,
-                            'type' => 'T_ForeignKeyLookup',
-                            'lookup' =>
-                                array(
-                                    'cardinality' => 'CARDINALITY_SINGLE',
-                                    'table' => 'hotel',
-                                    'field' => 'hotel_id',
-                                    'display' => 'name',
-                                    'label_display_expr_only' => true,
-                                ),
-                        ),
-                    'check_in_date' =>
-                        array(
-                            'label' => 'Check In Date',
-                            'required' => true,
-                            'editable' => true,
-                            'type' => 'T_TextLine',
-                        ),
-                    'check_out_date' =>
-                        array(
-                            'label' => 'Check Out Date',
-                            'required' => true,
-                            'editable' => true,
-                            'type' => 'T_TextLine',
-                        ),
-                ),
-            'primary_key' =>
-                array(
-                    'columns' =>
-                        array(),
-                    'auto' => false,
-                ),
-        ),
-    'hotel' =>
-        array(
-            'display_name' => 'Hotel',
-            'description' => '',
-            'item_name' => 'Hotel',
-            'actions' =>
-                array(
-                    0 => 'edit',
-                    1 => 'new',
-                    2 => 'view',
-                    3 => 'list',
-                    4 => 'delete',
-                    5 => 'link',
-                ),
-            'fields' =>
-                array(
-                    'hotel_id' =>
-                        array(
-                            'label' => 'Hotel Id',
-                            'required' => true,
-                            'editable' => false,
-                            'type' => 'T_Number',
-                        ),
-                    'name' =>
-                        array(
-                            'label' => 'Name',
-                            'required' => true,
-                            'editable' => true,
-                            'type' => 'T_TextLine',
-                            'len' => 30,
-                        ),
-                    'hotel_type_id' =>
-                        array(
-                            'label' => 'Hotel Type Id',
-                            'required' => true,
-                            'editable' => true,
-                            'type' => 'T_Number',
-                        ),
-                    'food_type_id' =>
-                        array(
-                            'label' => 'Food Type Id',
-                            'required' => true,
-                            'editable' => true,
-                            'type' => 'T_Number',
-                        ),
-                ),
-            'primary_key' =>
-                array(
-                    'columns' =>
-                        array(
-                            0 => 'hotel_id',
-                        ),
-                    'auto' => true,
-                    'sequence_name' => 'hotel_hotel_id_seq',
-                ),
-        ),
-    'passport' =>
-        array(
-            'display_name' => 'Passport',
-            'description' => '',
-            'item_name' => 'Passport',
-            'actions' =>
-                array(
-                    0 => 'edit',
-                    1 => 'new',
-                    2 => 'view',
-                    3 => 'list',
-                    4 => 'delete',
-                    5 => 'link',
-                ),
-            'fields' =>
-                array(
-                    'passport_id' =>
-                        array(
-                            'label' => 'Passport Id',
-                            'required' => true,
-                            'editable' => false,
-                            'type' => 'T_Number',
-                        ),
-                ),
-            'primary_key' =>
-                array(
-                    'columns' =>
-                        array(
-                            0 => 'passport_id',
-                        ),
-                    'auto' => true,
-                    'sequence_name' => 'passport_passport_id_seq',
-                ),
-        ),
-    'personnel' =>
-        array(
-            'display_name' => 'Personnel',
-            'description' => '',
-            'item_name' => 'Personnel',
-            'actions' =>
-                array(
-                    0 => 'edit',
-                    1 => 'new',
-                    2 => 'view',
-                    3 => 'list',
-                    4 => 'delete',
-                    5 => 'link',
-                ),
-            'fields' =>
-                array(
-                    'person_id' =>
-                        array(
-                            'label' => 'Person Id',
-                            'required' => true,
-                            'editable' => false,
-                            'type' => 'T_Number',
-                        ),
-                    'person_name' =>
-                        array(
-                            'label' => 'Person Name',
-                            'required' => true,
-                            'editable' => true,
-                            'type' => 'T_TextLine',
-                            'len' => 50,
-                        ),
-                ),
-            'primary_key' =>
-                array(
-                    'columns' =>
-                        array(
-                            0 => 'person_id',
-                        ),
-                    'auto' => true,
-                    'sequence_name' => 'personnel_person_id_seq',
-                ),
-        ),
-    'transport_type' =>
-        array(
-            'display_name' => 'Transport Type',
-            'description' => '',
-            'item_name' => 'Transport Type',
-            'actions' =>
-                array(
-                    0 => 'edit',
-                    1 => 'new',
-                    2 => 'view',
-                    3 => 'list',
-                    4 => 'delete',
-                    5 => 'link',
-                ),
-            'fields' =>
-                array(
-                    'transport_type_id' =>
-                        array(
-                            'label' => 'Transport Type Id',
-                            'required' => true,
-                            'editable' => false,
-                            'type' => 'T_Number',
-                        ),
-                    'transport_type' =>
-                        array(
-                            'label' => 'Transport Type',
-                            'required' => true,
-                            'editable' => true,
-                            'type' => 'T_TextLine',
-                            'len' => 50,
-                        ),
-                ),
-            'primary_key' =>
-                array(
-                    'columns' =>
-                        array(
-                            0 => 'transport_type_id',
-                        ),
-                    'auto' => true,
-                    'sequence_name' => 'transport_type_transport_type_id_seq',
-                ),
-        ),
-    'transport_type__trip' =>
-        array(
-            'display_name' => 'Transport Type  Trip',
-            'description' => '',
-            'item_name' => 'Transport Type  Trip',
-            'actions' =>
-                array(
-                    0 => 'edit',
-                    1 => 'new',
-                    2 => 'view',
-                    3 => 'list',
-                    4 => 'delete',
-                    5 => 'link',
-                ),
-            'fields' =>
-                array(
-                    'transport_type_id' =>
-                        array(
-                            'label' => 'Transport Type Id',
-                            'required' => true,
-                            'editable' => true,
-                            'type' => 'T_ForeignKeyLookup',
-                            'lookup' =>
-                                array(
-                                    'cardinality' => 'CARDINALITY_SINGLE',
-                                    'table' => 'transport_type',
-                                    'field' => 'transport_type_id',
-                                    'display' => 'transport_type',
-                                    'label_display_expr_only' => true,
-                                ),
-                        ),
-                    'trip_id' =>
-                        array(
-                            'label' => 'Trip Id',
-                            'required' => true,
-                            'editable' => true,
-                            'type' => 'T_ForeignKeyLookup',
-                            'lookup' =>
-                                array(
-                                    'cardinality' => 'CARDINALITY_SINGLE',
-                                    'table' => 'trip',
-                                    'field' => 'trip_id',
-                                    'display' => 'trip_id',
-                                    'label_display_expr_only' => true,
-                                ),
-                        ),
-                ),
-            'primary_key' =>
-                array(
-                    'columns' =>
-                        array(),
-                    'auto' => false,
-                ),
-        ),
-    'trip' =>
-        array(
-            'display_name' => 'Trip',
-            'description' => '',
-            'item_name' => 'Trip',
-            'actions' =>
-                array(
-                    0 => 'edit',
-                    1 => 'new',
-                    2 => 'view',
-                    3 => 'list',
-                    4 => 'delete',
-                    5 => 'link',
-                ),
-            'fields' =>
-                array(
-                    'trip_id' =>
-                        array(
-                            'label' => 'Trip Id',
-                            'required' => true,
-                            'editable' => false,
-                            'type' => 'T_Number',
-                        ),
-                    'duration' =>
-                        array(
-                            'label' => 'Duration',
-                            'required' => true,
-                            'editable' => true,
-                            'type' => 'T_Number',
-                        ),
-                    'cost' =>
-                        array(
-                            'label' => 'Cost',
-                            'required' => true,
-                            'editable' => true,
-                            'type' => 'T_TextLine',
-                        ),
-                ),
-            'primary_key' =>
-                array(
-                    'columns' =>
-                        array(
-                            0 => 'trip_id',
-                        ),
-                    'auto' => true,
-                    'sequence_name' => 'trip_trip_id_seq',
-                ),
-        ),
-    'trip__excursion' =>
-        array(
-            'display_name' => 'Trip  Excursion',
-            'description' => '',
-            'item_name' => 'Trip  Excursion',
-            'actions' =>
-                array(
-                    0 => 'edit',
-                    1 => 'new',
-                    2 => 'view',
-                    3 => 'list',
-                    4 => 'delete',
-                    5 => 'link',
-                ),
-            'fields' =>
-                array(
-                    'trip_id' =>
-                        array(
-                            'label' => 'Trip Id',
-                            'required' => true,
-                            'editable' => true,
-                            'type' => 'T_ForeignKeyLookup',
-                            'lookup' =>
-                                array(
-                                    'cardinality' => 'CARDINALITY_SINGLE',
-                                    'table' => 'trip',
-                                    'field' => 'trip_id',
-                                    'display' => 'trip_id',
-                                    'label_display_expr_only' => true,
-                                ),
-                        ),
-                    'excursion_id' =>
-                        array(
-                            'label' => 'Excursion Id',
-                            'required' => true,
-                            'editable' => true,
-                            'type' => 'T_Number',
-                        ),
-                ),
-            'primary_key' =>
-                array(
-                    'columns' =>
-                        array(),
-                    'auto' => false,
-                ),
-        ),
 
-    'users' => array(
-        'actions' => $ALL_ACTIONS,
-        'display_name' => 'Пользователи',
-        'description' => 'Пользователи of this application.',
-        'item_name' => 'Пользователь',
-        'primary_key' => array('auto' => true, 'columns' => array('id'), 'sequence_name' => 'users_id_seq'),
-        'sort' => array('name' => 'asc'),
-        'fields' => array(
-            'id' => array('label' => 'ID', 'type' => T_NUMBER, 'editable' => false),
-            'name' => array('label' => 'Полное имя', 'type' => T_TEXT_LINE, 'len' => 50, 'required' => true),
-            'login' => array('label' => 'Логин', 'type' => T_TEXT_LINE, 'len' => 10, 'required' => true),
-            'password' => array('label' => 'Пароль', 'type' => T_PASSWORD, 'len' => 32, 'required' => true, 'min_len' => 3,
-                'placeholder' => 'Мин. 3 символа'),
-        )
-    )
+$__arr = array (
+	'Accommodations' => 'Accommodations',
+	'Accommodation' => 'Accommodation',
+	'Id' => 'Id',
+	'Checkin Date' => 'Checkin Date',
+	'Checkout Date' => 'Checkout Date',
+	'Group Id' => 'Group Id',
+	'Hotel Id' => 'Hotel Id',
+	'Clients' => 'Clients',
+	'Client' => 'Client',
+	'Fullname' => 'Fullname',
+	'Rus Passport Data' => 'Rus Passport Data',
+	'Foreign Passport Data' => 'Foreign Passport Data',
+	'Insurance Date Of Issue' => 'Insurance Date Of Issue',
+	'Clients  Groups' => 'Clients  Groups',
+	'Client Id' => 'Client Id',
+	'Countries' => 'Countries',
+	'Country' => 'Страна',
+	'Name' => 'Name',
+	'Groups' => 'Groups',
+	'Group' => 'Group',
+	'N Places' => 'N Places',
+	'Trip Id' => 'Trip Id',
+	'Departure Date' => 'Departure Date',
+	'Arrival Date' => 'Arrival Date',
+	'Attendant Id' => 'Attendant Id',
+	'Hotel Types' => 'Hotel Types',
+	'Hotel Type' => 'Hotel Type',
+	'Hotels' => 'Hotels',
+	'Hotel' => 'Hotel',
+	'Hotel Type Id' => 'Hotel Type Id',
+	'Meal Plan Id' => 'Meal Plan Id',
+	'Meal Plans' => 'Meal Plans',
+	'Meal Plan' => 'Meal Plan',
+	'Personnel' => 'Personnel',
+	'Transport Types' => 'Transport Types',
+	'Transport Type' => 'Transport Type',
+	'Trips' => 'Trips',
+	'Trip' => 'Trip',
+	'Duration' => 'Duration',
+	'Cost' => 'Cost',
+	'N Excursions' => 'N Excursions',
+	'Trips  Countries' => 'Trips  Countries',
+	'Country Id' => 'Country Id',
+	'Trips  Transport Types' => 'Trips  Transport Types',
+	'Transport Type Id' => 'Transport Type Id',
+	'Users' => 'Users',
+	'User' => 'User',
+	'Login' => 'Login',
+	'Password' => 'Password',
 );
+$TABLES = array (
+	'accommodations' =>
+		array (
+			'display_name' => $__arr['Accommodations'],
+			'description' => '',
+			'item_name' => $__arr['Accommodation'],
+			'actions' => $ALL_ACTIONS,
+			'fields' =>
+				array (
+					'id' =>
+						array (
+							'label' => $__arr['Id'],
+							'required' => true,
+							'editable' => false,
+							'type' => 'T_Number',
+						),
+					'checkin_date' =>
+						array (
+							'label' => $__arr['Checkin Date'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_TextLine',
+						),
+					'checkout_date' =>
+						array (
+							'label' => $__arr['Checkout Date'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_TextLine',
+						),
+					'group_id' =>
+						array (
+							'label' => $__arr['Group Id'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_ForeignKeyLookup',
+							'lookup' =>
+								array (
+									'cardinality' => 'CARDINALITY_SINGLE',
+									'table' => 'groups',
+									'field' => 'id',
+									'display' => 'id',
+									'label_display_expr_only' => true,
+								),
+						),
+					'hotel_id' =>
+						array (
+							'label' => $__arr['Hotel Id'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_ForeignKeyLookup',
+							'lookup' =>
+								array (
+									'cardinality' => 'CARDINALITY_SINGLE',
+									'table' => 'hotels',
+									'field' => 'id',
+									'display' => 'name',
+									'label_display_expr_only' => true,
+								),
+						),
+				),
+			'primary_key' =>
+				array (
+					'columns' =>
+						array (
+							0 => 'id',
+						),
+					'auto' => true,
+					'sequence_name' => 'accommodations_id_seq',
+				),
+		),
+	'clients' =>
+		array (
+			'display_name' => $__arr['Clients'],
+			'description' => '',
+			'item_name' => $__arr['Client'],
+			'actions' => $ALL_ACTIONS,
+			'fields' =>
+				array (
+					'id' =>
+						array (
+							'label' => $__arr['Id'],
+							'required' => true,
+							'editable' => false,
+							'type' => 'T_Number',
+						),
+					'fullname' =>
+						array (
+							'label' => $__arr['Fullname'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_TextLine',
+							'len' => 100,
+							'resizeable' => true,
+						),
+					'rus_passport_data' =>
+						array (
+							'label' => $__arr['Rus Passport Data'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_TextLine',
+							'len' => 100,
+							'resizeable' => true,
+						),
+					'foreign_passport_data' =>
+						array (
+							'label' => $__arr['Foreign Passport Data'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_TextLine',
+							'len' => 100,
+							'resizeable' => true,
+						),
+					'insurance_date_of_issue' =>
+						array (
+							'label' => $__arr['Insurance Date Of Issue'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_TextLine',
+						),
+				),
+			'primary_key' =>
+				array (
+					'columns' =>
+						array (
+							0 => 'id',
+						),
+					'auto' => true,
+					'sequence_name' => 'clients_id_seq',
+				),
+		),
+	'clients__groups' =>
+		array (
+			'display_name' => $__arr['Clients  Groups'],
+			'description' => '',
+			'item_name' => 'Client<->Group',
+			'actions' => $ALL_ACTIONS,
+			'fields' =>
+				array (
+					'id' =>
+						array (
+							'label' => $__arr['Id'],
+							'required' => true,
+							'editable' => false,
+							'type' => 'T_Number',
+						),
+					'group_id' =>
+						array (
+							'label' => $__arr['Group Id'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_ForeignKeyLookup',
+							'lookup' =>
+								array (
+									'cardinality' => 'CARDINALITY_SINGLE',
+									'table' => 'groups',
+									'field' => 'id',
+									'display' => 'id',
+									'label_display_expr_only' => true,
+								),
+						),
+					'client_id' =>
+						array (
+							'label' => $__arr['Client Id'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_ForeignKeyLookup',
+							'lookup' =>
+								array (
+									'cardinality' => 'CARDINALITY_SINGLE',
+									'table' => 'clients',
+									'field' => 'id',
+									'display' => 'fullname',
+									'label_display_expr_only' => true,
+								),
+						),
+				),
+			'primary_key' =>
+				array (
+					'columns' =>
+						array (
+							0 => 'id',
+						),
+					'auto' => true,
+					'sequence_name' => 'clients__groups_id_seq',
+				),
+		),
+	'countries' =>
+		array (
+			'display_name' => $__arr['Countries'],
+			'description' => '',
+			'item_name' => $__arr['Country'],
+			'actions' => $ALL_ACTIONS,
+			'fields' =>
+				array (
+					'id' =>
+						array (
+							'label' => $__arr['Id'],
+							'required' => true,
+							'editable' => false,
+							'type' => 'T_Number',
+						),
+					'name' =>
+						array (
+							'label' => $__arr['Name'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_TextLine',
+							'len' => 100,
+							'resizeable' => true,
+						),
+				),
+			'primary_key' =>
+				array (
+					'columns' =>
+						array (
+							0 => 'id',
+						),
+					'auto' => true,
+					'sequence_name' => 'countries_id_seq',
+				),
+		),
+	'groups' =>
+		array (
+			'display_name' => $__arr['Groups'],
+			'description' => '',
+			'item_name' => $__arr['Group'],
+			'actions' => $ALL_ACTIONS,
+			'fields' =>
+				array (
+					'id' =>
+						array (
+							'label' => $__arr['Id'],
+							'required' => true,
+							'editable' => false,
+							'type' => 'T_Number',
+						),
+					'n_places' =>
+						array (
+							'label' => $__arr['N Places'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_Number',
+						),
+					'trip_id' =>
+						array (
+							'label' => $__arr['Trip Id'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_ForeignKeyLookup',
+							'lookup' =>
+								array (
+									'cardinality' => 'CARDINALITY_SINGLE',
+									'table' => 'trips',
+									'field' => 'id',
+									'display' => 'id',
+									'label_display_expr_only' => true,
+								),
+						),
+					'hotel_id' =>
+						array (
+							'label' => $__arr['Hotel Id'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_ForeignKeyLookup',
+							'lookup' =>
+								array (
+									'cardinality' => 'CARDINALITY_SINGLE',
+									'table' => 'hotels',
+									'field' => 'id',
+									'display' => 'name',
+									'label_display_expr_only' => true,
+								),
+						),
+					'departure_date' =>
+						array (
+							'label' => $__arr['Departure Date'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_TextLine',
+						),
+					'arrival_date' =>
+						array (
+							'label' => $__arr['Arrival Date'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_TextLine',
+						),
+					'attendant_id' =>
+						array (
+							'label' => $__arr['Attendant Id'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_ForeignKeyLookup',
+							'lookup' =>
+								array (
+									'cardinality' => 'CARDINALITY_SINGLE',
+									'table' => 'personnel',
+									'field' => 'id',
+									'display' => 'fullname',
+									'label_display_expr_only' => true,
+								),
+						),
+				),
+			'primary_key' =>
+				array (
+					'columns' =>
+						array (
+							0 => 'id',
+						),
+					'auto' => true,
+					'sequence_name' => 'groups_id_seq',
+				),
+		),
+	'hotel_types' =>
+		array (
+			'display_name' => $__arr['Hotel Types'],
+			'description' => '',
+			'item_name' => $__arr['Hotel Type'],
+			'actions' => $ALL_ACTIONS,
+			'fields' =>
+				array (
+					'id' =>
+						array (
+							'label' => $__arr['Id'],
+							'required' => true,
+							'editable' => false,
+							'type' => 'T_Number',
+						),
+					'name' =>
+						array (
+							'label' => $__arr['Name'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_TextLine',
+							'len' => 100,
+							'resizeable' => true,
+						),
+				),
+			'primary_key' =>
+				array (
+					'columns' =>
+						array (
+							0 => 'id',
+						),
+					'auto' => true,
+					'sequence_name' => 'hotel_types_id_seq',
+				),
+		),
+	'hotels' =>
+		array (
+			'display_name' => $__arr['Hotels'],
+			'description' => '',
+			'item_name' => $__arr['Hotel'],
+			'actions' => $ALL_ACTIONS,
+			'fields' =>
+				array (
+					'id' =>
+						array (
+							'label' => $__arr['Id'],
+							'required' => true,
+							'editable' => false,
+							'type' => 'T_Number',
+						),
+					'name' =>
+						array (
+							'label' => $__arr['Name'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_TextLine',
+							'len' => 100,
+							'resizeable' => true,
+						),
+					'hotel_type_id' =>
+						array (
+							'label' => $__arr['Hotel Type Id'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_ForeignKeyLookup',
+							'lookup' =>
+								array (
+									'cardinality' => 'CARDINALITY_SINGLE',
+									'table' => 'hotel_types',
+									'field' => 'id',
+									'display' => 'name',
+									'label_display_expr_only' => true,
+								),
+						),
+					'meal_plan_id' =>
+						array (
+							'label' => $__arr['Meal Plan Id'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_ForeignKeyLookup',
+							'lookup' =>
+								array (
+									'cardinality' => 'CARDINALITY_SINGLE',
+									'table' => 'meal_plans',
+									'field' => 'id',
+									'display' => 'name',
+									'label_display_expr_only' => true,
+								),
+						),
+				),
+			'primary_key' =>
+				array (
+					'columns' =>
+						array (
+							0 => 'id',
+						),
+					'auto' => true,
+					'sequence_name' => 'hotels_id_seq',
+				),
+		),
+	'meal_plans' =>
+		array (
+			'display_name' => $__arr['Meal Plans'],
+			'description' => '',
+			'item_name' => $__arr['Meal Plan'],
+			'actions' => $ALL_ACTIONS,
+			'fields' =>
+				array (
+					'id' =>
+						array (
+							'label' => $__arr['Id'],
+							'required' => true,
+							'editable' => false,
+							'type' => 'T_Number',
+						),
+					'name' =>
+						array (
+							'label' => $__arr['Name'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_TextLine',
+							'len' => 100,
+							'resizeable' => true,
+						),
+				),
+			'primary_key' =>
+				array (
+					'columns' =>
+						array (
+							0 => 'id',
+						),
+					'auto' => true,
+					'sequence_name' => 'meal_plans_id_seq',
+				),
+		),
+	'personnel' =>
+		array (
+			'display_name' => $__arr['Personnel'],
+			'description' => '',
+			'item_name' => $__arr['Personnel'],
+			'actions' => $ALL_ACTIONS,
+			'fields' =>
+				array (
+					'id' =>
+						array (
+							'label' => $__arr['Id'],
+							'required' => true,
+							'editable' => false,
+							'type' => 'T_Number',
+						),
+					'fullname' =>
+						array (
+							'label' => $__arr['Fullname'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_TextLine',
+							'len' => 100,
+							'resizeable' => true,
+						),
+				),
+			'primary_key' =>
+				array (
+					'columns' =>
+						array (
+							0 => 'id',
+						),
+					'auto' => true,
+					'sequence_name' => 'personnel_id_seq',
+				),
+		),
+	'transport_types' =>
+		array (
+			'display_name' => $__arr['Transport Types'],
+			'description' => '',
+			'item_name' => $__arr['Transport Type'],
+			'actions' => $ALL_ACTIONS,
+			'fields' =>
+				array (
+					'id' =>
+						array (
+							'label' => $__arr['Id'],
+							'required' => true,
+							'editable' => false,
+							'type' => 'T_Number',
+						),
+					'name' =>
+						array (
+							'label' => $__arr['Name'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_TextLine',
+							'len' => 100,
+							'resizeable' => true,
+						),
+				),
+			'primary_key' =>
+				array (
+					'columns' =>
+						array (
+							0 => 'id',
+						),
+					'auto' => true,
+					'sequence_name' => 'transport_types_id_seq',
+				),
+		),
+	'trips' =>
+		array (
+			'display_name' => $__arr['Trips'],
+			'description' => '',
+			'item_name' => $__arr['Trip'],
+			'actions' => $ALL_ACTIONS,
+			'fields' =>
+				array (
+					'id' =>
+						array (
+							'label' => $__arr['Id'],
+							'required' => true,
+							'editable' => false,
+							'type' => 'T_Number',
+						),
+					'duration' =>
+						array (
+							'label' => $__arr['Duration'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_Number',
+						),
+					'cost' =>
+						array (
+							'label' => $__arr['Cost'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_TextLine',
+						),
+					'n_excursions' =>
+						array (
+							'label' => $__arr['N Excursions'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_Number',
+						),
+				),
+			'primary_key' =>
+				array (
+					'columns' =>
+						array (
+							0 => 'id',
+						),
+					'auto' => true,
+					'sequence_name' => 'trips_id_seq',
+				),
+		),
+	'trips__countries' =>
+		array (
+			'display_name' => $__arr['Trips  Countries'],
+			'description' => '',
+			'item_name' => 'Trip<->Country',
+			'actions' => $ALL_ACTIONS,
+			'fields' =>
+				array (
+					'id' =>
+						array (
+							'label' => $__arr['Id'],
+							'required' => true,
+							'editable' => false,
+							'type' => 'T_Number',
+						),
+					'trip_id' =>
+						array (
+							'label' => $__arr['Trip Id'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_ForeignKeyLookup',
+							'lookup' =>
+								array (
+									'cardinality' => 'CARDINALITY_SINGLE',
+									'table' => 'trips',
+									'field' => 'id',
+									'display' => 'id',
+									'label_display_expr_only' => true,
+								),
+						),
+					'country_id' =>
+						array (
+							'label' => $__arr['Country Id'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_ForeignKeyLookup',
+							'lookup' =>
+								array (
+									'cardinality' => 'CARDINALITY_SINGLE',
+									'table' => 'countries',
+									'field' => 'id',
+									'display' => 'name',
+									'label_display_expr_only' => true,
+								),
+						),
+				),
+			'primary_key' =>
+				array (
+					'columns' =>
+						array (
+							0 => 'id',
+						),
+					'auto' => true,
+					'sequence_name' => 'trips__countries_id_seq',
+				),
+		),
+	'trips__transport_types' =>
+		array (
+			'display_name' => $__arr['Trips  Transport Types'],
+			'description' => '',
+			'item_name' => 'Trip<->Transport Type',
+			'actions' => $ALL_ACTIONS,
+			'fields' =>
+				array (
+					'id' =>
+						array (
+							'label' => $__arr['Id'],
+							'required' => true,
+							'editable' => false,
+							'type' => 'T_Number',
+						),
+					'trip_id' =>
+						array (
+							'label' => $__arr['Trip Id'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_ForeignKeyLookup',
+							'lookup' =>
+								array (
+									'cardinality' => 'CARDINALITY_SINGLE',
+									'table' => 'trips',
+									'field' => 'id',
+									'display' => 'id',
+									'label_display_expr_only' => true,
+								),
+						),
+					'transport_type_id' =>
+						array (
+							'label' => $__arr['Transport Type Id'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_ForeignKeyLookup',
+							'lookup' =>
+								array (
+									'cardinality' => 'CARDINALITY_SINGLE',
+									'table' => 'transport_types',
+									'field' => 'id',
+									'display' => 'name',
+									'label_display_expr_only' => true,
+								),
+						),
+				),
+			'primary_key' =>
+				array (
+					'columns' =>
+						array (
+							0 => 'id',
+						),
+					'auto' => true,
+					'sequence_name' => 'trips__transport_types_id_seq',
+				),
+		),
+	'users' =>
+		array (
+			'display_name' => $__arr['Users'],
+			'description' => '',
+			'item_name' => $__arr['User'],
+			'actions' => $ALL_ACTIONS,
+			'fields' =>
+				array (
+					'id' =>
+						array (
+							'label' => $__arr['Id'],
+							'required' => true,
+							'editable' => false,
+							'type' => 'T_Number',
+						),
+					'name' =>
+						array (
+							'label' => $__arr['Name'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_TextLine',
+							'len' => 50,
+						),
+					'login' =>
+						array (
+							'label' => $__arr['Login'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_TextLine',
+							'len' => 10,
+						),
+					'password' =>
+						array (
+							'label' => $__arr['Password'],
+							'required' => true,
+							'editable' => true,
+							'type' => 'T_TextLine',
+							'len' => 32,
+						),
+				),
+			'primary_key' =>
+				array (
+					'columns' =>
+						array (
+							0 => 'id',
+						),
+					'auto' => true,
+					'sequence_name' => 'users_id_seq',
+				),
+		),
+);
+
 ?>
